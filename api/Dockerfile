@@ -6,4 +6,4 @@ WORKDIR /usr/src/app/api
 
 COPY package*.json ./
 
-RUN npm install --quiet
+RUN yarn install
