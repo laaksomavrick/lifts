@@ -33,4 +33,5 @@ services:
       MYSQL_DATABASE: lifts
       MYSQL_USER: root
       MYSQL_PASSWORD: root
-volumes: mysql-datavolume:
+volumes:
+  ? mysql-datavolume
