@@ -1,37 +1,36 @@
-version: '3'
+version: "3"
 services:
   api:
     build: api/
-    command: 'yarn start:dev'
+    command: "yarn start:dev"
     depends_on:
       - db
     volumes:
       - ./api:/usr/src/app/api
       - /usr/src/app/api/node_modules
-    ports: 
+    ports:
       - "3001:3001"
-    environment: 
+    environment:
       HTTP_PORT: 3001
   spa:
     build: spa/
-    command: 'yarn start'
+    command: "yarn start"
     volumes:
       - ./spa:/usr/src/app/spa
       - /usr/src/app/spa/node_modules
-    ports: 
+    ports:
       - "3000:3000"
   db:
-    image: mysql:8
+    image: mysql:5.7
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     volumes:
       - mysql-datavolume:/var/lib/mysql
-    ports: 
+    ports:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: lifts
       MYSQL_USER: root
       MYSQL_PASSWORD: root
-volumes:
-  mysql-datavolume:
+volumes: mysql-datavolume:

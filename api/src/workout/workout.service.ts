@@ -12,11 +12,10 @@ export class WorkoutService {
   ) {}
 
   async create(createWorkoutDto: CreateWorkoutDto) {
-    console.log('here');
     return await this.workoutRepository.save(createWorkoutDto);
   }
 
   async findAll(): Promise<Workout[]> {
-    return await this.workoutRepository.find();
+    return await this.workoutRepository.find({ select: ['name', 'ordinal'] });
   }
 }
