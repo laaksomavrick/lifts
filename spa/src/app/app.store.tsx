@@ -4,11 +4,11 @@ import { applyMiddleware, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import AppReducer from "./app.reducer";
 
-export const history = createHistory();
+export const History = createHistory();
 
 const initialState = {};
 const enhancers = [];
-const middleware = [thunk, routerMiddleware(history)];
+const middleware = [thunk, routerMiddleware(History)];
 
 if (process.env.NODE_ENV === "development") {
   const devToolsExtension = (window as any).__REDUX_DEVTOOLS_EXTENSION__;
@@ -23,10 +23,8 @@ const composedEnhancers = compose(
   ...enhancers
 );
 
-const AppStore = createStore(
-  connectRouter(history)(AppReducer),
+export const AppStore = createStore(
+  connectRouter(History)(AppReducer),
   initialState,
   composedEnhancers
 );
-
-export default AppStore;
