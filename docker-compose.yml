@@ -34,4 +34,4 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: root
 volumes:
-  ? mysql-datavolume
+  mysql-datavolume:
